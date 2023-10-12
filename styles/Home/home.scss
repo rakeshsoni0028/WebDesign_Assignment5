@@ -1,0 +1,147 @@
+@import '../common.scss';
+// Variables
+$pageTitle: "DaVinci Corps";
+
+// Functions
+@function calculateFontSize($size) {
+    @return $size/ 16rem;
+}
+
+// Mixins
+@mixin box-shadow($x, $y, $blur, $color) {
+    box-shadow: $x $y $blur $color;
+}
+
+// Placeholder Selectors
+%button-style {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+// Styling enhancements
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    font-size: $fontSizeBase;
+}
+
+.introduction {
+    text-align: center;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 50px;
+
+    h1 {
+        font-size: calculateFontSize(36rem);
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: calculateFontSize(18rem);
+    }
+}
+
+.services {
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    display: grid;
+    @include box-shadow(0, 2px, 5px, rgba(0, 0, 0, 0.1));
+
+    .service {
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 10px;
+
+        h3 {
+            font-size: calculateFontSize(24rem);
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: calculateFontSize(16rem);
+            color: #555;
+        }
+    }
+}
+
+.pricing {
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    display: grid;
+    grid-auto-rows: auto;
+    @include box-shadow(0, 2px, 5px, rgba(0, 0, 0, 0.1));
+
+    .button {
+        @extend %button-style;
+        @include box-shadow(1px, 2px, 1px, rgba(0, 0, 0, 0.614));
+        float: right;
+    }
+
+    .plan {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 10px;
+
+        h3 {
+            float: left;
+            font-size: calculateFontSize(24rem);
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-top: 20px;
+            margin-left: 10px;
+            float: left;
+            font-size: calculateFontSize(10rem);
+            color: var(--accent-color);
+        }
+    }
+}
+
+// Add animations
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.introduction {
+    animation: fadeIn 1s ease-in-out;
+}
+
+
+.services {
+    animation:  slideInLeft 1s ease-in-out;
+}
+
